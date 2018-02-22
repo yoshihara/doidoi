@@ -3,10 +3,12 @@
         "eslint:recommended",
         "plugin:react/recommended",
         "plugin:import/errors",
-        "plugin:import/warnings"
+        "plugin:import/warnings",
+        "plugin:prettier/recommended"
     ],
     "plugins": [
-        "import"
+        "import",
+        "prettier"
     ],
     "parserOptions": {
         "ecmaVersion": 6,
@@ -17,5 +19,7 @@
     },
     "env": {"browser": true},
     "globals": {},
-    "rules": {}
+    "rules": {
+        "prettier/prettier": "error"
+    }
 }
