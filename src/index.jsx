@@ -41,6 +41,22 @@ class Todos extends React.Component {
     this.props.onChangeTodos(todos);
   }
 
+  _updateTodo(event, index) {
+    let todos = this.state.todos.slice();
+
+    switch (event.target.name) {
+      case "text":
+        todos[index].text = event.target.value;
+        break;
+      default:
+        alert(`Unexpected target: ${event.target.name}`);
+        return undefined;
+    }
+
+    this.setState(todos);
+    this.props.onChangeTodos(todos);
+  }
+
   shouldComponentUpdate(_newProps, _newState) {
     // TODO
     return true;
@@ -59,7 +75,13 @@ class Todos extends React.Component {
                 className="done"
                 onChange={this._toggleDone.bind(this, i)}
               />
-              <input type="text" defaultValue={todo.text} className="text" />
+              <input
+                type="text"
+                name="text"
+                defaultValue={todo.text}
+                className="text"
+                onChange={e => this._updateTodo(e, i)}
+              />
             </li>
           );
         })}
