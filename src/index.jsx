@@ -54,7 +54,7 @@ class Todos extends React.Component {
     this.props.onChangeTodos(todos);
   }
 
-  _addTodo(event) {
+  _handleSubmit(event) {
     let todos = this.state.todos.slice();
     todos = todos.concat({ done: false, text: this.state.newTodo });
 
@@ -97,7 +97,7 @@ class Todos extends React.Component {
           );
         })}
         <li>
-          <form onSubmit={this._addTodo.bind(this)}>
+          <form onSubmit={this._handleSubmit.bind(this)}>
             <input
               type="text"
               value={this.state.newTodo}
