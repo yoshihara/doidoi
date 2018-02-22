@@ -7,15 +7,16 @@ import { render } from "react-dom";
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      todos: [{ done: true, text: "hoge" }, { done: false, text: "fuga" }]
-    };
+
+    // TODO: 追加できるようにしたら空にする
+    let defaultTodos = [{ done: false, text: "" }];
+    let todos = JSON.parse(localStorage.getItem("doidoiTodos")) || defaultTodos;
+    this.state = { todos };
   }
 
   onChangeTodos(todos) {
+    localStorage.setItem("doidoiTodos", JSON.stringify(todos));
     return todos;
-    // TODO
-    // console.log(`SAVE: ${JSON.stringify(todos)}`);
   }
 
   render() {
