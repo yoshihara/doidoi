@@ -35,7 +35,7 @@ class Todos extends React.Component {
     this.state = { todos: this.props.todos, newTodo: "" };
   }
 
-  _updateTodo(event, index) {
+  _handleChange(event, index) {
     let todos = this.state.todos.slice();
 
     switch (event.target.name) {
@@ -84,7 +84,7 @@ class Todos extends React.Component {
                 name="done"
                 defaultChecked={todo.done}
                 className="done"
-                onChange={e => this._updateTodo(e, i)}
+                onChange={e => this._handleChange(e, i)}
               />
               <input
                 type="text"
