@@ -10,7 +10,8 @@
   },
   "lint-staged": {
     "src/*.jsx": [
-      "eslint --fix"
+      "eslint --fix",
+      "git add"
     ]
   },
   "keywords": [],
