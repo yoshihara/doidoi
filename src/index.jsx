@@ -23,6 +23,12 @@ class Todos extends React.Component {
     this.state = { todos: this.props.todos };
   }
 
+  _toggleDone(i) {
+    let todos = this.state.todos.slice();
+    todos[i].done = !todos[i].done;
+    this.setState(todos);
+  }
+
   render() {
     return (
       <ul>
@@ -34,6 +40,7 @@ class Todos extends React.Component {
                 type="checkbox"
                 defaultChecked={todo.done}
                 className="done"
+                onChange={this._toggleDone.bind(this, i)}
               />
               <input type="text" defaultValue={todo.text} className="text" />
             </li>
