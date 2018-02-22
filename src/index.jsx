@@ -8,13 +8,13 @@ class App extends React.Component {
   constructor(props) {
     super(props);
 
-    // TODO: 追加できるようにしたら空にする
-    let defaultTodos = [{ done: false, text: "" }];
+    let defaultTodos = [];
     let todos = JSON.parse(localStorage.getItem("doidoiTodos")) || defaultTodos;
     this.state = { todos };
   }
 
   onChangeTodos(todos) {
+    this.setState({ todos });
     localStorage.setItem("doidoiTodos", JSON.stringify(todos));
     return todos;
   }
@@ -32,7 +32,7 @@ class App extends React.Component {
 class Todos extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { todos: this.props.todos };
+    this.state = { todos: this.props.todos, newTodo: "" };
   }
 
   _updateTodo(event, index) {
@@ -52,6 +52,19 @@ class Todos extends React.Component {
 
     this.setState(todos);
     this.props.onChangeTodos(todos);
+  }
+
+  _addTodo(event) {
+    let todos = this.state.todos.slice();
+    todos = todos.concat({ done: false, text: this.state.newTodo });
+
+    this.setState({ todos, newTodo: "" });
+    this.props.onChangeTodos(todos);
+    event.preventDefault();
+  }
+
+  _handleChangeNewTodo(event) {
+    this.setState({ newTodo: event.target.value });
   }
 
   shouldComponentUpdate(_newProps, _newState) {
@@ -83,6 +96,16 @@ class Todos extends React.Component {
             </li>
           );
         })}
+        <li>
+          <form onSubmit={this._addTodo.bind(this)}>
+            <input
+              type="text"
+              value={this.state.newTodo}
+              onChange={this._handleChangeNewTodo.bind(this)}
+            />
+            <button type="submit">hoge</button>
+          </form>
+        </li>
       </ul>
     );
   }
