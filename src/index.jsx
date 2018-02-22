@@ -1,6 +1,7 @@
 'use strict';
 
 import React from 'react';
+import PropTypes from 'prop-types';
 import {render} from 'react-dom';
 
 class App extends React.Component {
@@ -38,5 +39,16 @@ class Todos extends React.Component {
     )
   }
 }
-
+Todos.propTypes = {
+  todos: PropTypes.arrayOf(function(propValue, key, componentName, location, propFullName) {
+    let value = propValue[key];
+    if (typeof value.done !== 'boolean') {
+      return new Error(`${componentName}.props.${propFullName}.done should be boolean, but ${value.done}`);
+    } else if (typeof value.text !== 'string') {
+      return new Error(`${componentName}.props.${propFullName}.text should be string, but ${value.text}`);
+    } else {
+      return true;
+    }
+  })
+}
 render(<App/>, document.getElementById('app'));
