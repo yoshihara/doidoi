@@ -4,30 +4,34 @@ import {render} from 'react-dom';
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      message: "something",
-      entered: "entered"
-    };
   }
 
-  onChange(e) {
-    this.setState({message: e.target.value});
-  }
-
-  onKeyDown(e) {
-    if (e.keyCode == 13) { // 13: Enter
-      this.setState({entered: this.state.message})
-    }
-  }
-
-  render () {
+  render() {
     return (
-      <div>
-        <input type="text" onChange={ this.onChange.bind(this) } onKeyDown={ this.onKeyDown.bind(this) }/>
-        <p>{ this.state.message }</p>
-        <p>{ this.state.entered }</p>
-      </div>
-    );
+      <Todos todos={[{done: true, text: 'hoge'}]}></Todos>
+    )
+  }
+}
+
+class Todos extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
+  render() {
+    return(
+      <ul>
+        {this.props.todos.map((todo, i) => {
+          return(
+            <li key={i}>
+              <input type='number' className='orders' />
+              <input type='checkbox' defaultChecked={todo.done} className='done'/>
+              <input type='text' defaultValue={todo.text} className='text' />
+            </li>
+          )
+        })}
+      </ul>
+    )
   }
 }
 
