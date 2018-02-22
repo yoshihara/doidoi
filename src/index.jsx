@@ -6,11 +6,12 @@ import {render} from 'react-dom';
 class App extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {todos: [{done: true, text: 'hoge'}, {done: false, text: 'fuga'}]};
   }
 
   render() {
     return (
-      <Todos todos={[{done: true, text: 'hoge'}]}></Todos>
+      <Todos todos={this.state.todos}></Todos>
     )
   }
 }
@@ -18,12 +19,13 @@ class App extends React.Component {
 class Todos extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {todos: this.props.todos};
   }
 
   render() {
     return(
       <ul>
-        {this.props.todos.map((todo, i) => {
+        {this.state.todos.map((todo, i) => {
           return(
             <li key={i}>
               <input type='number' className='orders' />
