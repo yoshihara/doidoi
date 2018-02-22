@@ -12,8 +12,8 @@ class App extends React.Component {
     };
   }
 
-  onChangeTodos(todo) {
-    return todo;
+  onChangeTodos(todos) {
+    return todos;
     // TODO
     // console.log(`SAVE: ${JSON.stringify(todos)}`);
   }
