@@ -20,6 +20,10 @@
     "env": {"browser": true},
     "globals": {},
     "rules": {
-        "prettier/prettier": "error"
+        "prettier/prettier": "error",
+        "no-unused-vars": [
+            "error",
+            { "argsIgnorePattern": "^_" }
+        ]
     }
 }
