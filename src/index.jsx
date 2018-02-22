@@ -12,8 +12,19 @@ class App extends React.Component {
     };
   }
 
+  onChangeTodos(todo) {
+    return todo;
+    // TODO
+    // console.log(`SAVE: ${JSON.stringify(todos)}`);
+  }
+
   render() {
-    return <Todos todos={this.state.todos} />;
+    return (
+      <Todos
+        todos={this.state.todos}
+        onChangeTodos={this.onChangeTodos.bind(this)}
+      />
+    );
   }
 }
 
@@ -27,6 +38,12 @@ class Todos extends React.Component {
     let todos = this.state.todos.slice();
     todos[i].done = !todos[i].done;
     this.setState(todos);
+    this.props.onChangeTodos(todos);
+  }
+
+  shouldComponentUpdate(_newProps, _newState) {
+    // TODO
+    return true;
   }
 
   render() {
@@ -52,6 +69,7 @@ class Todos extends React.Component {
 }
 
 Todos.propTypes = {
+  onChangeTodos: PropTypes.func,
   todos: PropTypes.arrayOf(function(
     propValue,
     key,
