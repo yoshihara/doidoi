@@ -34,19 +34,15 @@ class Todos extends React.Component {
     this.state = { todos: this.props.todos };
   }
 
-  _toggleDone(i) {
-    let todos = this.state.todos.slice();
-    todos[i].done = !todos[i].done;
-    this.setState(todos);
-    this.props.onChangeTodos(todos);
-  }
-
   _updateTodo(event, index) {
     let todos = this.state.todos.slice();
 
     switch (event.target.name) {
       case "text":
         todos[index].text = event.target.value;
+        break;
+      case "done":
+        todos[index].done = event.target.checked;
         break;
       default:
         alert(`Unexpected target: ${event.target.name}`);
@@ -71,9 +67,10 @@ class Todos extends React.Component {
               <input type="number" className="orders" />
               <input
                 type="checkbox"
+                name="done"
                 defaultChecked={todo.done}
                 className="done"
-                onChange={this._toggleDone.bind(this, i)}
+                onChange={e => this._updateTodo(e, i)}
               />
               <input
                 type="text"
