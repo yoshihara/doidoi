@@ -35,6 +35,11 @@ class Todos extends React.Component {
     this.state = { todos: this.props.todos, newTodo: "" };
   }
 
+  _handleClick(_event) {
+    this.setState({ todos: [] });
+    this.props.onChangeTodos(this.state.todos);
+  }
+
   _handleChange(event, index) {
     let todos = this.state.todos.slice();
 
@@ -74,39 +79,42 @@ class Todos extends React.Component {
 
   render() {
     return (
-      <ul>
-        {this.state.todos.map((todo, i) => {
-          return (
-            <li key={i}>
-              <input type="number" className="orders" />
-              <input
-                type="checkbox"
-                name="done"
-                defaultChecked={todo.done}
-                className="done"
-                onChange={e => this._handleChange(e, i)}
-              />
+      <div>
+        <button onClick={this._handleClick.bind(this)}>Clear TODO</button>
+        <ul>
+          {this.state.todos.map((todo, i) => {
+            return (
+              <li key={i}>
+                <input type="number" className="orders" />
+                <input
+                  type="checkbox"
+                  name="done"
+                  defaultChecked={todo.done}
+                  className="done"
+                  onChange={e => this._handleChange(e, i)}
+                />
+                <input
+                  type="text"
+                  name="text"
+                  defaultValue={todo.text}
+                  className="text"
+                  onChange={e => this._updateTodo(e, i)}
+                />
+              </li>
+            );
+          })}
+          <li>
+            <form onSubmit={this._handleSubmit.bind(this)}>
               <input
                 type="text"
-                name="text"
-                defaultValue={todo.text}
-                className="text"
-                onChange={e => this._updateTodo(e, i)}
+                value={this.state.newTodo}
+                onChange={this._handleChangeNewTodo.bind(this)}
               />
-            </li>
-          );
-        })}
-        <li>
-          <form onSubmit={this._handleSubmit.bind(this)}>
-            <input
-              type="text"
-              value={this.state.newTodo}
-              onChange={this._handleChangeNewTodo.bind(this)}
-            />
-            <button type="submit">hoge</button>
-          </form>
-        </li>
-      </ul>
+              <button type="submit">hoge</button>
+            </form>
+          </li>
+        </ul>
+      </div>
     );
   }
 }
