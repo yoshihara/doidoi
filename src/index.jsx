@@ -3,6 +3,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { render } from "react-dom";
+import "bootstrap/dist/css/bootstrap.css";
 
 class App extends React.Component {
   constructor(props) {
@@ -80,7 +81,13 @@ class Todos extends React.Component {
   render() {
     return (
       <div>
-        <button onClick={this._handleClick.bind(this)}>Clear TODO</button>
+        <button
+          type="button"
+          className="btn btn-warning"
+          onClick={this._handleClick.bind(this)}
+        >
+          Clear TODO
+        </button>
         <ul>
           {this.state.todos.map((todo, i) => {
             return (
