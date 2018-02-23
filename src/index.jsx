@@ -37,7 +37,7 @@ class Todos extends React.Component {
 
   _handleClick(_event) {
     this.setState({ todos: [] });
-    this.props.onChangeTodos(this.state.todos);
+    this.props.onChangeTodos([]);
   }
 
   _handleChange(event, index) {
