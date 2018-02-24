@@ -119,7 +119,7 @@ class Todos extends React.Component {
           value={this.state.newTodo}
           onChange={this._handleChangeNewTodo.bind(this)}
         />
-        <button type="submit">hoge</button>
+        <button type="submit">+</button>
       </form>
     );
   }
@@ -136,7 +136,7 @@ class Todos extends React.Component {
             className="btn btn-warning"
             onClick={this._handleClick.bind(this)}
           >
-            Clear TODO
+            Clear TODOs
           </button>
         </div>
         <div>
