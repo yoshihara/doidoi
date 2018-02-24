@@ -21,12 +21,30 @@ class App extends React.Component {
     return todos;
   }
 
+  onAddTodos(newTodos) {
+    let todos = this.state.todos.slice();
+    todos = todos.concat(newTodos);
+    this.onChangeTodos(todos);
+  }
+
   render() {
     return (
-      <Todos
-        todos={this.state.todos}
-        onChangeTodos={this.onChangeTodos.bind(this)}
-      />
+      <div className="container">
+        <div>
+          <h1>Doing List</h1>
+        </div>
+        <Todos
+          todos={this.state.todos}
+          onChangeTodos={this.onChangeTodos.bind(this)}
+        />
+        <div className="row mt-5">
+          <NewTodos onAddTodos={this.onAddTodos.bind(this)} />
+        </div>
+
+        <div className="row mt-5">
+          <Menu onChangeTodos={this.onChangeTodos.bind(this)} />
+        </div>
+      </div>
     );
   }
 }
@@ -34,12 +52,6 @@ class App extends React.Component {
 class Todos extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { newTodo: "" };
-  }
-
-  _handleClick(_event) {
-    this.setState({ todos: [] });
-    this.props.onChangeTodos([]);
   }
 
   _handleChange(event, index) {
@@ -58,28 +70,6 @@ class Todos extends React.Component {
     }
 
     this.props.onChangeTodos(todos);
-  }
-
-  _handleSubmit(event) {
-    event.preventDefault();
-
-    let newTodo = this.state.newTodo.toString();
-    if (newTodo === "") return;
-
-    let newTodos = [];
-    newTodo.split("\n").forEach(todo => {
-      if (todo !== "") newTodos = newTodos.concat({ done: false, text: todo });
-    });
-    let todos = this.state.todos.slice();
-
-    todos = todos.concat(newTodos);
-
-    this.setState({ todos, newTodo: "" });
-    this.props.onChangeTodos(todos);
-  }
-
-  _handleChangeNewTodo(event) {
-    this.setState({ newTodo: event.target.value });
   }
 
   shouldComponentUpdate(_newProps, _newState) {
@@ -128,7 +118,41 @@ class Todos extends React.Component {
     });
   }
 
-  _renderNewTodoForm() {
+  render() {
+    return (
+      <div className="row">
+        <ul className="col-sm-12 list-unstyled">{this._renderTodos()}</ul>
+      </div>
+    );
+  }
+}
+
+class NewTodos extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { newTodo: "" };
+  }
+
+  _handleSubmit(event) {
+    event.preventDefault();
+
+    let newTodo = this.state.newTodo.toString();
+    if (newTodo === "") return;
+
+    let newTodos = [];
+    newTodo.split("\n").forEach(todo => {
+      if (todo !== "") newTodos = newTodos.concat({ done: false, text: todo });
+    });
+
+    this.setState({ newTodo: "" });
+    this.props.onAddTodos(newTodos);
+  }
+
+  _handleChangeNewTodo(event) {
+    this.setState({ newTodo: event.target.value });
+  }
+
+  render() {
     return (
       <form
         className="col-sm-12 form-inline"
@@ -149,30 +173,39 @@ class Todos extends React.Component {
       </form>
     );
   }
+}
+
+class Menu extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
+  _handleClick(_event) {
+    this.props.onChangeTodos([]);
+  }
 
   render() {
     return (
-      <div className="container">
-        <div>
-          <h1>Doing List</h1>
-        </div>
-        <div className="row">
-          <button
-            type="button"
-            className="btn btn-warning"
-            onClick={this._handleClick.bind(this)}
-          >
-            Clear TODOs
-          </button>
-        </div>
-        <div>
-          <ul className="list-unstyled">{this._renderTodos()}</ul>
-        </div>
-        <div className="row mt-5">{this._renderNewTodoForm()}</div>
+      <div className="row">
+        <button
+          type="button"
+          className="btn btn-warning"
+          onClick={this._handleClick.bind(this)}
+        >
+          Clear TODOs
+        </button>
       </div>
     );
   }
 }
+
+NewTodos.propTypes = {
+  onAddTodos: PropTypes.func
+};
+
+Menu.propTypes = {
+  onChangeTodos: PropTypes.func
+};
 
 Todos.propTypes = {
   onChangeTodos: PropTypes.func,
