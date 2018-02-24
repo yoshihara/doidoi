@@ -85,7 +85,7 @@ class Todos extends React.Component {
 
   _renderTodo(todo, i) {
     return (
-      <li key={i}>
+      <li key={i} className="row">
         <input type="number" className="orders" />
         <input
           type="checkbox"
@@ -130,7 +130,7 @@ class Todos extends React.Component {
         <div>
           <h1>Doing List</h1>
         </div>
-        <div>
+        <div className="row">
           <button
             type="button"
             className="btn btn-warning"
@@ -142,7 +142,7 @@ class Todos extends React.Component {
         <div>
           <ul>{this._renderTodos()}</ul>
         </div>
-        <div>{this._renderNewTodoForm()}</div>
+        <div className="row">{this._renderNewTodoForm()}</div>
       </div>
     );
   }
