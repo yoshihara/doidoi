@@ -62,12 +62,16 @@ class Todos extends React.Component {
   }
 
   _handleSubmit(event) {
+    event.preventDefault();
+
+    let newTodo = this.state.newTodo.toString();
+    if (newTodo === "") return;
+
     let todos = this.state.todos.slice();
-    todos = todos.concat({ done: false, text: this.state.newTodo });
+    todos = todos.concat({ done: false, text: newTodo });
 
     this.setState({ todos, newTodo: "" });
     this.props.onChangeTodos(todos);
-    event.preventDefault();
   }
 
   _handleChangeNewTodo(event) {
