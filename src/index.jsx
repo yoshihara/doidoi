@@ -136,9 +136,9 @@ class Todos extends React.Component {
           >
             Clear TODO
           </button>
-          <ul>
-            {this._renderTodos()}
-          </ul>
+        </div>
+        <div>
+          <ul>{this._renderTodos()}</ul>
         </div>
         <div>{this._renderNewTodoForm()}</div>
       </div>
