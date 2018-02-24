@@ -126,19 +126,21 @@ class Todos extends React.Component {
 
   render() {
     return (
-      <div>
-        <h1>Doing List</h1>
-        <button
-          type="button"
-          className="btn btn-warning"
-          onClick={this._handleClick.bind(this)}
-        >
-          Clear TODO
-        </button>
-        <ul>
-          {this._renderTodos()}
-          <li>{this._renderNewTodoForm()}</li>
-        </ul>
+      <div className="container">
+        <div>
+          <h1>Doing List</h1>
+          <button
+            type="button"
+            className="btn btn-warning"
+            onClick={this._handleClick.bind(this)}
+          >
+            Clear TODO
+          </button>
+          <ul>
+            {this._renderTodos()}
+            <li>{this._renderNewTodoForm()}</li>
+          </ul>
+        </div>
       </div>
     );
   }
