@@ -67,8 +67,13 @@ class Todos extends React.Component {
     let newTodo = this.state.newTodo.toString();
     if (newTodo === "") return;
 
+    let newTodos = [];
+    newTodo.split("\n").forEach(todo => {
+      if (todo !== "") newTodos = newTodos.concat({ done: false, text: todo });
+    });
     let todos = this.state.todos.slice();
-    todos = todos.concat({ done: false, text: newTodo });
+
+    todos = todos.concat(newTodos);
 
     this.setState({ todos, newTodo: "" });
     this.props.onChangeTodos(todos);
