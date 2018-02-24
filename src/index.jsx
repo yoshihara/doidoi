@@ -147,6 +147,10 @@ class NewTodos extends React.Component {
   }
 
   _handleChange(event) {
+    // NOTE: Adjust height with contents using 'auto' for height once
+    this.textarea.style.height = "auto";
+    this.textarea.style.height = this.textarea.scrollHeight + "px";
+
     this.setState({ newTodo: event.target.value });
   }
 
@@ -159,6 +163,9 @@ class NewTodos extends React.Component {
         <div className="form-group col-sm-9 offset-sm-1">
           <textarea
             className="form-control col-sm-12"
+            ref={text => {
+              this.textarea = text;
+            }}
             value={this.state.newTodo}
             onChange={this._handleChange.bind(this)}
           />
