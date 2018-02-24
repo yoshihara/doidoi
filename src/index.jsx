@@ -148,7 +148,7 @@ class NewTodos extends React.Component {
     this.props.onAddTodos(newTodos);
   }
 
-  _handleChangeNewTodo(event) {
+  _handleChange(event) {
     this.setState({ newTodo: event.target.value });
   }
 
@@ -162,7 +162,7 @@ class NewTodos extends React.Component {
           <textarea
             className="form-control col-sm-12"
             value={this.state.newTodo}
-            onChange={this._handleChangeNewTodo.bind(this)}
+            onChange={this._handleChange.bind(this)}
           />
         </div>
         <div className="form-group col-sm-1">
