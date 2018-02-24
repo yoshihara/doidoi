@@ -1,3 +1,4 @@
+// Error bountaryの対応 componentDidCatch
 "use strict";
 
 import React from "react";
@@ -78,6 +79,31 @@ class Todos extends React.Component {
     return true;
   }
 
+  _renderTodos() {
+    return this.state.todos.map((todo, i) => {
+      return (
+        // TODO: _renderTodoにわける
+        <li key={i}>
+          <input type="number" className="orders" />
+          <input
+            type="checkbox"
+            name="done"
+            defaultChecked={todo.done}
+            className="done"
+            onChange={e => this._handleChange(e, i)}
+          />
+          <input
+            type="text"
+            name="text"
+            defaultValue={todo.text}
+            className="text"
+            onChange={e => this._updateTodo(e, i)}
+          />
+        </li>
+      );
+    });
+  }
+
   render() {
     return (
       <div>
@@ -89,27 +115,7 @@ class Todos extends React.Component {
           Clear TODO
         </button>
         <ul>
-          {this.state.todos.map((todo, i) => {
-            return (
-              <li key={i}>
-                <input type="number" className="orders" />
-                <input
-                  type="checkbox"
-                  name="done"
-                  defaultChecked={todo.done}
-                  className="done"
-                  onChange={e => this._handleChange(e, i)}
-                />
-                <input
-                  type="text"
-                  name="text"
-                  defaultValue={todo.text}
-                  className="text"
-                  onChange={e => this._updateTodo(e, i)}
-                />
-              </li>
-            );
-          })}
+          {this._renderTodos()}
           <li>
             <form onSubmit={this._handleSubmit.bind(this)}>
               <input
