@@ -85,21 +85,25 @@ class Todos extends React.Component {
 
   _renderTodo(todo, i) {
     return (
-      <li key={i} className="row justify-content-md-center">
-        <div className="col col-sm-12">
-          <input type="number" className="col-sm-1" />
+      <li key={i} className="row col col-sm-12 justify-content-md-center">
+        <div className="col col-sm-1">
+          <input type="number" className="form-control" />
+        </div>
+        <div className="col col-sm-auto form-check">
           <input
             type="checkbox"
             name="done"
             defaultChecked={todo.done}
-            className="col-sm-auto"
+            className="form-check-input"
             onChange={e => this._handleChange(e, i)}
           />
+        </div>
+        <div className="col col-sm-10">
           <input
             type="text"
             name="text"
             defaultValue={todo.text}
-            className="col-sm-10"
+            className="form-control"
             onChange={e => this._handleChange(e, i)}
           />
         </div>
