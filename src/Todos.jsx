@@ -45,7 +45,7 @@ export default class Todos extends React.Component {
             type="text"
             name="order"
             className="form-control"
-            defaultValue={todo.order}
+            value={todo.order || ""}
             onChange={e => this._handleChange(e, i)}
           />
         </div>
