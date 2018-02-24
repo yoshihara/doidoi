@@ -126,13 +126,22 @@ class Todos extends React.Component {
 
   _renderNewTodoForm() {
     return (
-      <form onSubmit={this._handleSubmit.bind(this)}>
-        <input
-          type="text"
-          value={this.state.newTodo}
-          onChange={this._handleChangeNewTodo.bind(this)}
-        />
-        <button type="submit">+</button>
+      <form
+        className="col-sm-12 form-inline"
+        onSubmit={this._handleSubmit.bind(this)}
+      >
+        <div className="form-group col-sm-9 offset-sm-1">
+          <textarea
+            className="form-control col-sm-12"
+            value={this.state.newTodo}
+            onChange={this._handleChangeNewTodo.bind(this)}
+          />
+        </div>
+        <div className="form-group col-sm-1">
+          <button type="submit" className="btn btn-primary">
+            +
+          </button>
+        </div>
       </form>
     );
   }
