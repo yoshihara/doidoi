@@ -154,6 +154,13 @@ class NewTodos extends React.Component {
     this.setState({ newTodo: event.target.value });
   }
 
+  _handleKeyUp(event) {
+    if (event.ctrlKey && event.keyCode === 13) {
+      // Ctrl + Enter
+      this._handleSubmit(event);
+    }
+  }
+
   render() {
     return (
       <form
@@ -168,6 +175,7 @@ class NewTodos extends React.Component {
             }}
             value={this.state.newTodo}
             onChange={this._handleChange.bind(this)}
+            onKeyUp={this._handleKeyUp.bind(this)}
           />
         </div>
         <div className="form-group col-sm-1">
