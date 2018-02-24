@@ -129,6 +129,8 @@ class Todos extends React.Component {
       <div className="container">
         <div>
           <h1>Doing List</h1>
+        </div>
+        <div>
           <button
             type="button"
             className="btn btn-warning"
