@@ -4,14 +4,14 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "lint_fix": "eslint --fix src/*.jsx",
     "precommit": "lint-staged",
     "server": "webpack-dev-server",
     "build": "webpack"
   },
   "lint-staged": {
     "src/*.jsx": [
-      "eslint --fix",
-      "git add"
+      "eslint"
     ]
   },
   "keywords": [],
