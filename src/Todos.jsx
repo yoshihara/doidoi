@@ -39,7 +39,7 @@ export default class Todos extends React.Component {
     // done: https://getbootstrap.com/docs/4.0/components/buttons/#checkbox-and-radio-buttons でcssで表示するアイコンを変える
     // order,text: 別CSSで通常は下線だけ、フォーカス時はprimaryの下線が出るように
     return (
-      <li key={i} className="row col col-sm-12 mb-2">
+      <li key={todo.id} className="row col col-sm-12 mb-2">
         <div className="col col-sm-1">
           <input
             type="text"

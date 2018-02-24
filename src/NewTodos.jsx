@@ -19,6 +19,7 @@ export default class NewTodos extends React.Component {
     newTodo.split("\n").forEach(todo => {
       if (todo !== "")
         newTodos = newTodos.concat({
+          id: null,
           order: null,
           done: false,
           text: todo
