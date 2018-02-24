@@ -140,7 +140,7 @@ class Todos extends React.Component {
           </button>
         </div>
         <div>
-          <ul>{this._renderTodos()}</ul>
+          <ul className="list-unstyled">{this._renderTodos()}</ul>
         </div>
         <div className="row">{this._renderNewTodoForm()}</div>
       </div>
