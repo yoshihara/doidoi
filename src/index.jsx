@@ -94,9 +94,13 @@ class Todos extends React.Component {
             type="checkbox"
             name="done"
             defaultChecked={todo.done}
+            id={"done-" + i}
             className="form-check-input"
             onChange={e => this._handleChange(e, i)}
           />
+          <label htmlFor={"done-" + i} className="form-check-label">
+            -
+          </label>
         </div>
         <div className="col col-sm-10">
           <input
