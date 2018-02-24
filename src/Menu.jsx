@@ -8,6 +8,10 @@ export default class Menu extends React.Component {
     super(props);
   }
 
+  _handleClickReorder(_event) {
+    this.props.onReorderTodos();
+  }
+
   _handleClickClear(_event) {
     this.props.onChangeTodos([]);
   }
@@ -16,13 +20,22 @@ export default class Menu extends React.Component {
     return (
       <div className="row">
         <div className="col">
-        <button
-          type="button"
-          className="btn btn-warning"
-          onClick={this._handleClickClear.bind(this)}
-        >
-          Clear TODOs
-        </button>
+          <button
+            type="button"
+            className="btn btn-outline-info"
+            onClick={this._handleClickReorder.bind(this)}
+          >
+            Reorder
+          </button>
+        </div>
+        <div className="col">
+          <button
+            type="button"
+            className="btn btn-warning"
+            onClick={this._handleClickClear.bind(this)}
+          >
+            Clear TODOs
+          </button>
         </div>
       </div>
     );
@@ -30,5 +43,6 @@ export default class Menu extends React.Component {
 }
 
 Menu.propTypes = {
-  onChangeTodos: PropTypes.func
+  onChangeTodos: PropTypes.func,
+  onReorderTodos: PropTypes.func
 };

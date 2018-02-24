@@ -16,6 +16,15 @@ export default class App extends React.Component {
     this.state = { todos };
   }
 
+  onReorderTodos() {
+    let todos = this.state.todos.slice();
+    todos = todos.sort(function(a, b) {
+      return a.order < b.order ? -1 : a.order > b.order ? 1 : 0;
+    });
+
+    this.onChangeTodos(todos);
+  }
+
   onChangeTodos(todos) {
     this.setState({ todos });
     localStorage.setItem("doidoiTodos", JSON.stringify(todos));
@@ -49,8 +58,9 @@ export default class App extends React.Component {
 
         <div className="row mt-5">
           <Menu
-             onChangeTodos={this.onChangeTodos.bind(this)}
-           />
+            onReorderTodos={this.onReorderTodos.bind(this)}
+            onChangeTodos={this.onChangeTodos.bind(this)}
+          />
         </div>
       </div>
     );
