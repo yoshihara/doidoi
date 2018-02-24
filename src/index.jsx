@@ -85,7 +85,7 @@ class Todos extends React.Component {
 
   _renderTodo(todo, i) {
     return (
-      <li key={i} className="row col col-sm-12 justify-content-md-center">
+      <li key={i} className="row col col-sm-12 justify-content-md-center mb-2">
         <div className="col col-sm-1">
           <input type="number" className="form-control" />
         </div>
