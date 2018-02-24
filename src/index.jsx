@@ -111,6 +111,19 @@ class Todos extends React.Component {
     });
   }
 
+  _renderNewTodoForm() {
+    return (
+      <form onSubmit={this._handleSubmit.bind(this)}>
+        <input
+          type="text"
+          value={this.state.newTodo}
+          onChange={this._handleChangeNewTodo.bind(this)}
+        />
+        <button type="submit">hoge</button>
+      </form>
+    );
+  }
+
   render() {
     return (
       <div>
@@ -123,16 +136,7 @@ class Todos extends React.Component {
         </button>
         <ul>
           {this._renderTodos()}
-          <li>
-            <form onSubmit={this._handleSubmit.bind(this)}>
-              <input
-                type="text"
-                value={this.state.newTodo}
-                onChange={this._handleChangeNewTodo.bind(this)}
-              />
-              <button type="submit">hoge</button>
-            </form>
-          </li>
+          <li>{this._renderNewTodoForm()}</li>
         </ul>
       </div>
     );
