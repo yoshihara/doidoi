@@ -97,7 +97,7 @@ class Todos extends React.Component {
             name="text"
             defaultValue={todo.text}
             className="text"
-            onChange={e => this._updateTodo(e, i)}
+            onChange={e => this._handleChange(e, i)}
           />
         </li>
       );
