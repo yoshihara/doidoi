@@ -83,28 +83,31 @@ class Todos extends React.Component {
     return true;
   }
 
+  _renderTodo(todo, i) {
+    return (
+      <li key={i}>
+        <input type="number" className="orders" />
+        <input
+          type="checkbox"
+          name="done"
+          defaultChecked={todo.done}
+          className="done"
+          onChange={e => this._handleChange(e, i)}
+        />
+        <input
+          type="text"
+          name="text"
+          defaultValue={todo.text}
+          className="text"
+          onChange={e => this._handleChange(e, i)}
+        />
+      </li>
+    );
+  }
+
   _renderTodos() {
     return this.state.todos.map((todo, i) => {
-      return (
-        // TODO: _renderTodoにわける
-        <li key={i}>
-          <input type="number" className="orders" />
-          <input
-            type="checkbox"
-            name="done"
-            defaultChecked={todo.done}
-            className="done"
-            onChange={e => this._handleChange(e, i)}
-          />
-          <input
-            type="text"
-            name="text"
-            defaultValue={todo.text}
-            className="text"
-            onChange={e => this._handleChange(e, i)}
-          />
-        </li>
-      );
+      return this._renderTodo(todo, i);
     });
   }
 
