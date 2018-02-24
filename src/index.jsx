@@ -112,16 +112,14 @@ class Todos extends React.Component {
     );
   }
 
-  _renderTodos() {
-    return this.props.todos.map((todo, i) => {
-      return this._renderTodo(todo, i);
-    });
-  }
-
   render() {
     return (
       <div className="row">
-        <ul className="col-sm-12 list-unstyled">{this._renderTodos()}</ul>
+        <ul className="col-sm-12 list-unstyled">
+          {this.props.todos.map((todo, i) => {
+            return this._renderTodo(todo, i);
+          })}
+        </ul>
       </div>
     );
   }
