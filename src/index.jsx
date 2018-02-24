@@ -34,7 +34,7 @@ class App extends React.Component {
 class Todos extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { todos: this.props.todos, newTodo: "" };
+    this.state = { newTodo: "" };
   }
 
   _handleClick(_event) {
@@ -43,7 +43,7 @@ class Todos extends React.Component {
   }
 
   _handleChange(event, index) {
-    let todos = this.state.todos.slice();
+    let todos = this.props.todos.slice();
 
     switch (event.target.name) {
       case "text":
@@ -57,7 +57,6 @@ class Todos extends React.Component {
         return undefined;
     }
 
-    this.setState(todos);
     this.props.onChangeTodos(todos);
   }
 
@@ -124,7 +123,7 @@ class Todos extends React.Component {
   }
 
   _renderTodos() {
-    return this.state.todos.map((todo, i) => {
+    return this.props.todos.map((todo, i) => {
       return this._renderTodo(todo, i);
     });
   }
