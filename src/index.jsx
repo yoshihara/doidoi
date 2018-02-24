@@ -84,6 +84,9 @@ class Todos extends React.Component {
   }
 
   _renderTodo(todo, i) {
+    // TODO: デザイン調整
+    // done: inputはhiddenにしてlabelクリックで表示切り替え
+    // order,text: 別CSSで通常は下線だけ、フォーカス時はprimaryの下線が出るように
     return (
       <li key={i} className="row col col-sm-12 justify-content-md-center mb-2">
         <div className="col col-sm-1">
