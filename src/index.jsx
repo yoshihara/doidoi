@@ -164,7 +164,7 @@ class Todos extends React.Component {
         <div>
           <ul className="list-unstyled">{this._renderTodos()}</ul>
         </div>
-        <div className="row">{this._renderNewTodoForm()}</div>
+        <div className="row mt-5">{this._renderNewTodoForm()}</div>
       </div>
     );
   }
