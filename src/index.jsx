@@ -85,7 +85,7 @@ class Todos extends React.Component {
 
   _renderTodo(todo, i) {
     return (
-      <li key={i} className="row">
+      <li key={i} className="row justify-content-md-center">
         <input type="number" className="orders" />
         <input
           type="checkbox"
