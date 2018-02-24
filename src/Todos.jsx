@@ -12,6 +12,9 @@ export default class Todos extends React.Component {
     let todos = this.props.todos.slice();
 
     switch (event.target.name) {
+      case "order":
+        todos[index].order = parseInt(event.target.value) || "";
+        break;
       case "text":
         todos[index].text = event.target.value;
         break;
@@ -39,8 +42,11 @@ export default class Todos extends React.Component {
       <li key={i} className="row col col-sm-12 mb-2">
         <div className="col col-sm-1">
           <input
-            type="number"
+            type="text"
+            name="order"
             className="form-control"
+            defaultValue={todo.order}
+            onChange={e => this._handleChange(e, i)}
           />
         </div>
         <div className="col col-sm-auto form-check">
