@@ -1,7 +1,5 @@
 "use strict";
 
-// Error bountaryの対応 componentDidCatch
-
 import React from "react";
 import Todos from "./Todos.jsx";
 import NewTodos from "./NewTodos.jsx";
