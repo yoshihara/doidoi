@@ -16,19 +16,23 @@ export default class App extends React.Component {
     this.state = { todos };
   }
 
+  _updateTodos(todos) {
+    this.setState({ todos });
+    localStorage.setItem("doidoiTodos", JSON.stringify(todos));
+    return todos;
+  }
+
   onReorderTodos() {
     let todos = this.state.todos.slice();
     todos = todos.sort(function(a, b) {
       return a.order < b.order ? -1 : a.order > b.order ? 1 : 0;
     });
 
-    this.onChangeTodos(todos);
+    this._updateTodos(todos);
   }
 
   onChangeTodos(todos) {
-    this.setState({ todos });
-    localStorage.setItem("doidoiTodos", JSON.stringify(todos));
-    return todos;
+    this._updateTodos(todos);
   }
 
   onAddTodos(newTodos) {
@@ -39,7 +43,8 @@ export default class App extends React.Component {
       return todo;
     });
     todos = todos.concat(newTodos);
-    this.onChangeTodos(todos);
+
+    this._updateTodos(todos);
   }
 
   render() {
