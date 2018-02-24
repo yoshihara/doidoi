@@ -138,9 +138,9 @@ class Todos extends React.Component {
           </button>
           <ul>
             {this._renderTodos()}
-            <li>{this._renderNewTodoForm()}</li>
           </ul>
         </div>
+        <div>{this._renderNewTodoForm()}</div>
       </div>
     );
   }
