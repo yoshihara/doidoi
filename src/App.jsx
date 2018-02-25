@@ -3,7 +3,8 @@
 import React from "react";
 import Todos from "./Todos.jsx";
 import NewTodos from "./NewTodos.jsx";
-import Menu from "./Menu.jsx";
+import ReorderButton from "./ReorderButton.jsx";
+import ClearButton from "./ClearButton.jsx";
 
 export default class App extends React.Component {
   constructor(props) {
@@ -60,10 +61,12 @@ export default class App extends React.Component {
         </div>
 
         <div className="row mt-5">
-          <Menu
-            onReorderTodos={this.onReorderTodos.bind(this)}
-            onChangeTodos={this.onChangeTodos.bind(this)}
-          />
+          <div className="col col-sm-auto">
+            <ReorderButton onReorderTodos={this.onReorderTodos.bind(this)} />
+          </div>
+          <div className="col col-sm-auto">
+            <ClearButton onChangeTodos={this.onChangeTodos.bind(this)} />
+          </div>
         </div>
       </div>
     );
