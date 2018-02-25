@@ -98,7 +98,13 @@ Todos.propTypes = {
     propFullName
   ) {
     let value = propValue[key];
-    if (typeof value.done !== "boolean") {
+    if (typeof value.id !== "number") {
+      return new Error(
+        `${componentName}.props.${propFullName}.id should be number, but ${
+          value.id
+        }`
+      );
+    } else if (typeof value.done !== "boolean") {
       return new Error(
         `${componentName}.props.${propFullName}.done should be boolean, but ${
           value.done
