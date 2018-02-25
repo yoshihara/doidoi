@@ -66,7 +66,7 @@ export default class Todos extends React.Component {
           <input
             type="text"
             name="text"
-            defaultValue={todo.text}
+            value={todo.text}
             className="form-control"
             onChange={e => this._handleChange(e, i)}
           />
