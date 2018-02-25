@@ -1,0 +1,34 @@
+{
+    "extends": [
+        "eslint:recommended",
+        "plugin:react/recommended",
+        "plugin:import/errors",
+        "plugin:import/warnings",
+        "plugin:prettier/recommended",
+        "plugin:jest/recommended"
+    ],
+    "plugins": [
+        "import",
+        "prettier",
+        "jest"
+    ],
+    "parserOptions": {
+        "ecmaVersion": 6,
+        "sourceType": "module",
+        "ecmaFeatures": {
+            "jsx": true
+        }
+    },
+    "env": {
+      "browser": true
+    },
+    "globals": {},
+    "rules": {
+        "prettier/prettier": "error",
+        "no-unused-vars": [
+            "error",
+            { "argsIgnorePattern": "^_" }
+        ],
+        "react/no-find-dom-node": "off"
+    }
+}
