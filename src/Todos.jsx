@@ -104,6 +104,12 @@ Todos.propTypes = {
           value.id
         }`
       );
+    } else if (value.order && typeof value.order !== "number") {
+      return new Error(
+        `${componentName}.props.${propFullName}.order should be number, but ${
+          value.order
+        }`
+      );
     } else if (typeof value.done !== "boolean") {
       return new Error(
         `${componentName}.props.${propFullName}.done should be boolean, but ${
