@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "lint_fix": "eslint --fix src/*.jsx __tests__/*.jsx",
+    "lint_fix": "eslint --fix src/*.jsx __tests__/*.js*",
     "precommit": "lint-staged",
     "server": "webpack-dev-server",
     "build": "webpack",
@@ -20,6 +20,12 @@
     ]
   },
   "jest": {
+    "testMatch": [
+      "**/__tests__/*-test.jsx"
+    ],
+    "setupFiles": [
+      "./__tests__/setup.js"
+    ],
     "unmockedModulePathPatterns": [
       "node_modules/react",
       "node_modules/react-dom",
@@ -36,6 +42,8 @@
     "babel-preset-env": "^1.6.1",
     "babel-preset-react": "^6.24.1",
     "css-loader": "^0.28.10",
+    "enzyme": "^3.3.0",
+    "enzyme-adapter-react-16": "^1.1.1",
     "eslint-config-prettier": "2.9.0",
     "eslint-plugin-jest": "^21.12.2",
     "eslint-plugin-prettier": "2.6.0",
