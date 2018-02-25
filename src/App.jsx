@@ -10,8 +10,8 @@ export default class App extends React.Component {
   constructor(props) {
     super(props);
 
-    let defaultTodos = [];
-    let todos = JSON.parse(localStorage.getItem("doidoiTodos")) || defaultTodos;
+    let defaultTodos = "[]";
+    let todos = JSON.parse(localStorage.getItem("doidoiTodos") || defaultTodos);
     this.state = { todos };
   }
 
