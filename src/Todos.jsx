@@ -29,11 +29,6 @@ export default class Todos extends React.Component {
     this.props.onChangeTodos(todos);
   }
 
-  shouldComponentUpdate(_newProps, _newState) {
-    // TODO
-    return true;
-  }
-
   _renderTodo(todo, i) {
     // TODO: デザイン調整
     // done: https://getbootstrap.com/docs/4.0/components/buttons/#checkbox-and-radio-buttons でcssで表示するアイコンを変える
