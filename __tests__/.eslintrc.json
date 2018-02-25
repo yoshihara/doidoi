@@ -22,7 +22,9 @@
     "env": {
       "browser": true
     },
-    "globals": {},
+    "globals": {
+      "global": true
+    },
     "rules": {
         "prettier/prettier": "error",
         "no-unused-vars": [
