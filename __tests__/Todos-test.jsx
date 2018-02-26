@@ -39,28 +39,28 @@ describe("Todos", () => {
     };
 
     describe("todo", () => {
-      it("unmuched id", () => {
+      it("id", () => {
         let todo = { done: false, id: "invalid", order: 10, text: "todo1" };
         expect(() => {
           shallow(<Todos todos={[todo]} />);
         }).toThrow();
       });
 
-      it("unmuched todo", () => {
+      it("todo", () => {
         let todo = { done: "unexpected", id: 0, order: 10, text: "todo1" };
         expect(() => {
           shallow(<Todos todos={[todo]} />);
         }).toThrow();
       });
 
-      it("unmuched order", () => {
+      it("order", () => {
         let todo = { done: false, id: 0, order: "unexpected", text: "todo1" };
         expect(() => {
           shallow(<Todos todos={[todo]} />);
         }).toThrow();
       });
 
-      it("unmuched text", () => {
+      it("text", () => {
         let todo = { done: false, id: 0, order: 10, text: 123 };
         expect(() => {
           shallow(<Todos todos={[todo]} />);
