@@ -52,10 +52,13 @@ export default class App extends React.Component {
         <div>
           <h1>Doing List</h1>
         </div>
-        <Todos
-          todos={this.state.todos}
-          onChangeTodos={this.onChangeTodos.bind(this)}
-        />
+        <div className="row">
+          <Todos
+            todos={this.state.todos}
+            onChangeTodos={this.onChangeTodos.bind(this)}
+          />
+        </div>
+
         <div className="row mt-5">
           <NewTodos onAddTodos={this.onAddTodos.bind(this)} />
         </div>

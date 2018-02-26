@@ -72,13 +72,11 @@ export default class Todos extends React.Component {
 
   render() {
     return (
-      <div className="row">
-        <ul className="col-sm-12 list-unstyled">
-          {this.props.todos.map((todo, i) => {
-            return this._renderTodo(todo, i);
-          })}
-        </ul>
-      </div>
+      <ul className="col-sm-12 list-unstyled">
+        {this.props.todos.map((todo, i) => {
+          return this._renderTodo(todo, i);
+        })}
+      </ul>
     );
   }
 }
