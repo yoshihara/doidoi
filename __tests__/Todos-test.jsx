@@ -33,11 +33,6 @@ describe("Todos", () => {
   }
 
   describe("props validation", () => {
-    // eslint-disable-next-line no-console
-    console.error = error => {
-      throw new Error(error);
-    };
-
     describe("todo", () => {
       it("id", () => {
         let todo = { done: false, id: "invalid", order: 10, text: "todo1" };
