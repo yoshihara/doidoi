@@ -25,7 +25,9 @@ export default class App extends React.Component {
   onReorderTodos() {
     let todos = this.state.todos.slice();
     todos = todos.sort((a, b) => {
-      return a.order < b.order ? -1 : a.order > b.order ? 1 : 0;
+      if (a.order < b.order) return -1;
+      else if (a.order > b.order) return 1;
+      else return 0;
     });
 
     this._updateTodos(todos);
