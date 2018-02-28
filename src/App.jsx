@@ -36,12 +36,12 @@ export default class App extends React.Component {
 
   onAddTodos(newTodos) {
     let todos = this.state.todos.slice();
-    let nextId = todos.length;
-    newTodos = newTodos.map((todo, i) => {
-      todo.id = nextId + i;
+
+    todos = todos.concat(newTodos);
+    todos = todos.map((todo, i) => {
+      todo.id = i;
       return todo;
     });
-    todos = todos.concat(newTodos);
 
     this._updateTodos(todos);
   }

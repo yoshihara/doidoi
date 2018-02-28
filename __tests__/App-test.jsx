@@ -105,20 +105,27 @@ describe("App", () => {
 
   describe("onAddTodos()", () => {
     it("adds new Todos to state and storage", () => {
-      const { component } = setup();
-      const todos = [
-        { done: false, order: 10, text: "todo1" },
-        { done: false, order: 20, text: "todo2" }
-      ];
-      const storedTodos = [
-        { id: 0, done: false, order: 10, text: "todo1" },
-        { id: 1, done: false, order: 20, text: "todo2" }
-      ];
+      const { instance, component } = setup();
 
-      component._updateTodos = jest.fn();
+      const storedTodos = [
+        { id: 1, done: false, order: null, text: "todo1" },
+        { id: 2, done: false, order: null, text: "todo2" }
+      ];
+      instance.setState({ todos: storedTodos });
+
+      const todos = [
+        { done: false, order: null, text: "todo3" },
+        { done: false, order: null, text: "todo4" }
+      ];
+      const expectedTodos = [
+        { id: 0, done: false, order: null, text: "todo1" },
+        { id: 1, done: false, order: null, text: "todo2" },
+        { id: 2, done: false, order: null, text: "todo3" },
+        { id: 3, done: false, order: null, text: "todo4" }
+      ];
 
       component.onAddTodos(todos);
-      expect(component._updateTodos).toBeCalledWith(storedTodos);
+      expect(instance.state("todos")).toEqual(expectedTodos);
     });
   });
 });
