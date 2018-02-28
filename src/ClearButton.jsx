@@ -3,7 +3,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-export default class Menu extends React.Component {
+export default class ClearButton extends React.Component {
   constructor(props) {
     super(props);
   }
@@ -25,6 +25,6 @@ export default class Menu extends React.Component {
   }
 }
 
-Menu.propTypes = {
+ClearButton.propTypes = {
   onChangeTodos: PropTypes.func
 };
