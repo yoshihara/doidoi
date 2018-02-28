@@ -48,7 +48,7 @@ export default class Todos extends React.Component {
           <input
             type="checkbox"
             name="done"
-            defaultChecked={todo.done}
+            checked={todo.done}
             id={"done-" + i}
             className="form-check-input"
             onChange={e => this._handleChange(e, i)}

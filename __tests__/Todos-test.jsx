@@ -72,16 +72,12 @@ describe("Todos", () => {
 
       const firstLi = ul.children("li").first();
       expect(firstLi.find("input[name='order']").props().value).toBe(10);
-      expect(firstLi.find("input[name='done']").props().defaultChecked).toBe(
-        false
-      );
+      expect(firstLi.find("input[name='done']").props().checked).toBe(false);
       expect(firstLi.find("input[name='text']").props().value).toBe("todo1");
 
       const lastLi = ul.children("li").last();
       expect(lastLi.find("input[name='order']").props().value).toBe("");
-      expect(lastLi.find("input[name='done']").props().defaultChecked).toBe(
-        true
-      );
+      expect(lastLi.find("input[name='done']").props().checked).toBe(true);
       expect(lastLi.find("input[name='text']").props().value).toBe("todo2");
     });
   });
