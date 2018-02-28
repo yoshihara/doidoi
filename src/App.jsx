@@ -23,7 +23,7 @@ export default class App extends React.Component {
 
   onReorderTodos() {
     let todos = this.state.todos.slice();
-    todos = todos.sort(function(a, b) {
+    todos = todos.sort((a, b) => {
       return a.order < b.order ? -1 : a.order > b.order ? 1 : 0;
     });
 
