@@ -5,6 +5,7 @@ import Todos from "./Todos.jsx";
 import NewTodos from "./NewTodos.jsx";
 import ReorderButton from "./ReorderButton.jsx";
 import ClearButton from "./ClearButton.jsx";
+import DoneClearButton from "./DoneClearButton.jsx";
 
 export default class App extends React.Component {
   constructor(props) {
@@ -25,6 +26,15 @@ export default class App extends React.Component {
     let todos = this.state.todos.slice();
     todos = todos.sort((a, b) => {
       return a.order < b.order ? -1 : a.order > b.order ? 1 : 0;
+    });
+
+    this._updateTodos(todos);
+  }
+
+  onClearDoneTodos() {
+    let todos = this.state.todos.slice();
+    todos = todos.filter(todo => {
+      if (!todo.done) return todo;
     });
 
     this._updateTodos(todos);
@@ -69,6 +79,11 @@ export default class App extends React.Component {
           </div>
           <div className="col col-sm-auto">
             <ClearButton onChangeTodos={this.onChangeTodos.bind(this)} />
+          </div>
+          <div className="col col-sm-auto">
+            <DoneClearButton
+              onClearDoneTodos={this.onClearDoneTodos.bind(this)}
+            />
           </div>
         </div>
       </div>

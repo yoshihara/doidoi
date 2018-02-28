@@ -128,4 +128,23 @@ describe("App", () => {
       expect(instance.state("todos")).toEqual(expectedTodos);
     });
   });
+
+  describe("onClearDoneTodos()", () => {
+    it("clear done todos", () => {
+      const { instance, component } = setup();
+
+      const storedTodos = [
+        { id: 1, done: false, order: null, text: "todo1" },
+        { id: 2, done: true, order: null, text: "todo2" }
+      ];
+      instance.setState({ todos: storedTodos });
+
+      const expectedTodos = [
+        { id: 1, done: false, order: null, text: "todo1" }
+      ];
+
+      component.onClearDoneTodos();
+      expect(instance.state("todos")).toEqual(expectedTodos);
+    });
+  });
 });
