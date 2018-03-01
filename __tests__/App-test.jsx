@@ -92,14 +92,21 @@ describe("App", () => {
     it("calls func to update", () => {
       const { component } = setup();
       const todos = [
-        { done: false, id: 0, order: 20, text: "todo2" },
-        { done: false, id: 1, order: 10, text: "todo1" }
+        { done: false, id: 0, order: 20, text: "todo1" },
+        { done: false, id: 1, order: "", text: "todo2" },
+        { done: false, id: 2, order: null, text: "null todo" }
+      ];
+
+      const sanitizedTodos = [
+        { done: false, id: 0, order: 20, text: "todo1" },
+        { done: false, id: 1, order: null, text: "todo2" },
+        { done: false, id: 2, order: null, text: "null todo" }
       ];
 
       component._updateTodos = jest.fn();
 
       component.onChangeTodos(todos);
-      expect(component._updateTodos).toBeCalledWith(todos);
+      expect(component._updateTodos).toBeCalledWith(sanitizedTodos);
     });
   });
 

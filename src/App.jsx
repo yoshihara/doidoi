@@ -43,6 +43,10 @@ export default class App extends React.Component {
   }
 
   onChangeTodos(todos) {
+    todos = todos.map(todo => {
+      if (todo.order == "") todo.order = null;
+      return todo;
+    });
     this._updateTodos(todos);
   }
 
