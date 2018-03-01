@@ -29,6 +29,14 @@ export default class Todos extends React.Component {
     this.props.onChangeTodos(todos);
   }
 
+  _handleClick(index) {
+    if (!confirm("Sure?")) return;
+
+    let todos = this.props.todos.slice();
+    todos.splice(index, 1);
+    this.props.onChangeTodos(todos);
+  }
+
   _renderTodo(todo, i) {
     // TODO: デザイン調整
     // done: https://getbootstrap.com/docs/4.0/components/buttons/#checkbox-and-radio-buttons でcssで表示するアイコンを変える
@@ -57,7 +65,7 @@ export default class Todos extends React.Component {
             -
           </label>
         </div>
-        <div className="col col-sm-10">
+        <div className="col col-sm-9">
           <input
             type="text"
             name="text"
@@ -65,6 +73,15 @@ export default class Todos extends React.Component {
             className="form-control"
             onChange={e => this._handleChange(e, i)}
           />
+        </div>
+        <div className="col col-sm-1">
+          <button
+            type="button"
+            className="btn btn-warning"
+            onClick={this._handleClick.bind(this, i)}
+          >
+            x
+          </button>
         </div>
       </li>
     );

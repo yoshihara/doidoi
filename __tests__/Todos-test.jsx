@@ -136,4 +136,25 @@ describe("Todos", () => {
       expect(props.onChangeTodos).not.toBeCalled();
     });
   });
+
+  describe("Click button to remove todo", () => {
+    const confirm = window.confirm;
+    const confirmMock = jest.fn();
+    confirmMock.mockReturnValueOnce(false).mockReturnValueOnce(true);
+    window.confirm = confirmMock;
+
+    const { li } = setup();
+
+    const button = li.find("button");
+
+    button.simulate("click");
+    // Clicking "Cancel" in confirm
+    expect(props.onChangeTodos).not.toBeCalled();
+
+    button.simulate("click");
+    // Clicking "OK" in confirm
+    expect(props.onChangeTodos).toBeCalledWith([props.todos[1]]);
+
+    window.confirm = confirm;
+  });
 });
