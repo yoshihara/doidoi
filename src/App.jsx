@@ -25,7 +25,11 @@ export default class App extends React.Component {
   onReorderTodos() {
     let todos = this.state.todos.slice();
     todos = todos.sort((a, b) => {
-      if (a.order < b.order) return -1;
+      // order昇順 -> orderがnullの順でならべる
+      if (!a.order && !b.order) return 0;
+      else if (!a.order) return 1;
+      else if (!b.order) return -1;
+      else if (a.order < b.order) return -1;
       else if (a.order > b.order) return 1;
       else return 0;
     });

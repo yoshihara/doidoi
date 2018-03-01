@@ -72,8 +72,10 @@ describe("App", () => {
       const todos = [
         { done: false, id: 0, order: 10, text: "todo1" },
         { done: false, id: 1, order: 20, text: "todo2" },
+        { done: false, id: 5, order: null, text: "null todo" },
         { done: false, id: 4, order: 10, text: "todo1" },
-        { done: false, id: 2, order: 10, text: "todo3" }
+        { done: false, id: 2, order: 10, text: "todo3" },
+        { done: false, id: 3, order: null, text: "null todo2" }
       ];
       instance.setState({ todos: todos });
 
@@ -83,7 +85,9 @@ describe("App", () => {
         { done: false, id: 0, order: 10, text: "todo1" },
         { done: false, id: 4, order: 10, text: "todo1" },
         { done: false, id: 2, order: 10, text: "todo3" },
-        { done: false, id: 1, order: 20, text: "todo2" }
+        { done: false, id: 1, order: 20, text: "todo2" },
+        { done: false, id: 5, order: null, text: "null todo" },
+        { done: false, id: 3, order: null, text: "null todo2" }
       ]);
     });
   });
