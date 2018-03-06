@@ -13,7 +13,7 @@ export default class Todos extends React.Component {
 
     switch (event.target.name) {
       case "order":
-        todos[index].order = parseInt(event.target.value) || "";
+        todos[index].order = event.target.value;
         break;
       case "text":
         todos[index].text = event.target.value;
@@ -114,9 +114,9 @@ Todos.propTypes = {
           value.id
         }`
       );
-    } else if (value.order && typeof value.order !== "number") {
+    } else if (value.order && typeof value.order !== "string") {
       return new Error(
-        `${componentName}.props.${propFullName}.order should be number, but ${
+        `${componentName}.props.${propFullName}.order should be string, but ${
           value.order
         }`
       );

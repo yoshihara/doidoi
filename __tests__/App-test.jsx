@@ -55,8 +55,8 @@ describe("App", () => {
   describe("_updateTodos()", () => {
     it("converts todos to JSON and store JSON", () => {
       const { instance, component } = setup();
-      const todos = [{ done: false, id: 0, order: 10, text: "todo1" }];
-      const json = '[{"done":false,"id":0,"order":10,"text":"todo1"}]';
+      const todos = [{ done: false, id: 0, order: "10", text: "todo1" }];
+      const json = '[{"done":false,"id":0,"order":"10","text":"todo1"}]';
 
       localStorage.setItem = jest.fn();
 
@@ -70,11 +70,11 @@ describe("App", () => {
     it("reorders todos and store", () => {
       const { instance, component } = setup();
       const todos = [
-        { done: false, id: 0, order: 10, text: "todo1" },
-        { done: false, id: 1, order: 20, text: "todo2" },
+        { done: false, id: 0, order: "10", text: "todo1" },
+        { done: false, id: 1, order: "20", text: "todo2" },
         { done: false, id: 5, order: null, text: "null todo" },
-        { done: false, id: 4, order: 10, text: "todo1" },
-        { done: false, id: 2, order: 10, text: "todo3" },
+        { done: false, id: 4, order: "10", text: "todo1" },
+        { done: false, id: 2, order: "10", text: "todo3" },
         { done: false, id: 3, order: null, text: "null todo2" }
       ];
       instance.setState({ todos: todos });
@@ -82,10 +82,10 @@ describe("App", () => {
       component.onReorderTodos();
 
       expect(instance.state("todos")).toEqual([
-        { done: false, id: 0, order: 10, text: "todo1" },
-        { done: false, id: 4, order: 10, text: "todo1" },
-        { done: false, id: 2, order: 10, text: "todo3" },
-        { done: false, id: 1, order: 20, text: "todo2" },
+        { done: false, id: 0, order: "10", text: "todo1" },
+        { done: false, id: 4, order: "10", text: "todo1" },
+        { done: false, id: 2, order: "10", text: "todo3" },
+        { done: false, id: 1, order: "20", text: "todo2" },
         { done: false, id: 5, order: null, text: "null todo" },
         { done: false, id: 3, order: null, text: "null todo2" }
       ]);
@@ -96,13 +96,13 @@ describe("App", () => {
     it("calls func to update", () => {
       const { component } = setup();
       const todos = [
-        { done: false, id: 0, order: 20, text: "todo1" },
+        { done: false, id: 0, order: "20", text: "todo1" },
         { done: false, id: 1, order: "", text: "todo2" },
         { done: false, id: 2, order: null, text: "null todo" }
       ];
 
       const sanitizedTodos = [
-        { done: false, id: 0, order: 20, text: "todo1" },
+        { done: false, id: 0, order: "20", text: "todo1" },
         { done: false, id: 1, order: null, text: "todo2" },
         { done: false, id: 2, order: null, text: "null todo" }
       ];

@@ -10,7 +10,7 @@ describe("Todos", () => {
   const props = {
     onChangeTodos: jest.fn(),
     todos: [
-      { done: false, id: 0, order: 10, text: "todo1" },
+      { done: false, id: 0, order: "10", text: "todo1" },
       { done: true, id: 1, order: null, text: "todo2" }
     ]
   };
@@ -35,28 +35,28 @@ describe("Todos", () => {
   describe("props validation", () => {
     describe("todo", () => {
       it("id", () => {
-        let todo = { done: false, id: "invalid", order: 10, text: "todo1" };
+        let todo = { done: false, id: "invalid", order: "10", text: "todo1" };
         expect(() => {
           shallow(<Todos todos={[todo]} />);
         }).toThrow();
       });
 
-      it("todo", () => {
-        let todo = { done: "unexpected", id: 0, order: 10, text: "todo1" };
+      it("done", () => {
+        let todo = { done: "unexpected", id: 0, order: "10", text: "todo1" };
         expect(() => {
           shallow(<Todos todos={[todo]} />);
         }).toThrow();
       });
 
       it("order", () => {
-        let todo = { done: false, id: 0, order: "unexpected", text: "todo1" };
+        let todo = { done: false, id: 0, order: 123, text: "todo1" };
         expect(() => {
           shallow(<Todos todos={[todo]} />);
         }).toThrow();
       });
 
       it("text", () => {
-        let todo = { done: false, id: 0, order: 10, text: 123 };
+        let todo = { done: false, id: 0, order: "10", text: 123 };
         expect(() => {
           shallow(<Todos todos={[todo]} />);
         }).toThrow();
@@ -71,7 +71,7 @@ describe("Todos", () => {
       expect(ul.children("li")).toHaveLength(props.todos.length);
 
       const firstLi = ul.children("li").first();
-      expect(firstLi.find("input[name='order']").props().value).toBe(10);
+      expect(firstLi.find("input[name='order']").props().value).toBe("10");
       expect(firstLi.find("input[name='done']").props().checked).toBe(false);
       expect(firstLi.find("input[name='text']").props().value).toBe("todo1");
 
