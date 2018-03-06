@@ -61,9 +61,6 @@ export default class Todos extends React.Component {
             className="form-check-input"
             onChange={e => this._handleChange(e, i)}
           />
-          <label htmlFor={"done-" + i} className="form-check-label">
-            -
-          </label>
         </div>
         <div className="col col-sm-9">
           <input
